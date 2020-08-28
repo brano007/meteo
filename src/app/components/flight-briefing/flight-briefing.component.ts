@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { COUNTRIES, STATIONS, oneFieldRequired } from 'src/app/utils/validations';
-import { BackendService } from 'src/app/services/backend.service';
+import { COUNTRIES, STATIONS, oneFieldRequired } from '../../utils/validations';
+import { BackendService } from '../../services/backend.service';
 import { ReportTypes } from '../../enums/report-types.enum';
 import { v4 as uuid } from 'uuid';
 import {
