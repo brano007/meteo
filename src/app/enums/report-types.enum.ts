@@ -1,5 +1,5 @@
-export enum ReportType {
-  METAR,
-  TAF,
-  SIGMET
+export enum ReportTypes {
+  METAR = 'METAR',
+  TAF = 'TAF',
+  SIGMET = 'SIGMET'
 }

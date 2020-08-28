@@ -1,0 +1,74 @@
+<div class="form">
+  <form [formGroup]="form">
+    <mat-selection-list formControlName="reportTypes">
+      <mat-list-option *ngFor="let reportType of reportTypes" [value]="reportType">
+        {{ reportType }}
+      </mat-list-option>
+    </mat-selection-list>
+    <mat-error *ngIf="hasError('reportTypes', 'required')">
+      At least one report type is required.
+    </mat-error>
+    <div>
+      <mat-form-field>
+        <mat-label>Stations</mat-label>
+        <input matInput
+          type="text"
+          formControlName="stations">
+        <mat-error *ngIf="hasError('stations', 'pattern')">
+          Station (ICAO Code) must have length of four alphabets. Mulitple stations can be added by space.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Countries</mat-label>
+        <input matInput
+          type="text"
+          formControlName="countries">
+        <mat-error *ngIf="hasError('countries', 'pattern')">
+          Country (WMO Code) must have length of two alphabets.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <mat-error *ngIf="countryStationChosen()">
+      At least one country or station is required. Mulitple countries or stations can be added by space.
+    </mat-error>
+    <button
+      mat-flat-button color="primary"
+      (click)="submit()">
+      Create Briefing
+    </button>
+  </form>
+</div>
+<div *ngIf="showNoResult()">No results found.</div>
+
+<ng-container *ngIf="loading; else table">
+  <p>Please wait, loading...</p>
+</ng-container>
+
+<ng-template #table>
+  <mat-table
+    *ngIf="dataTable"
+    [dataSource]="dataTable">
+
+    <ng-container matColumnDef="queryType">
+      <mat-cell *matCellDef="let element">{{ element.queryType }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="reportTime">
+      <mat-cell *matCellDef="let element">{{ element.reportTime | dateTime }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="text">
+      <mat-cell *matCellDef="let element"><div [innerHTML]="element.text | cloudCondition"></div></mat-cell>
+    </ng-container>
+
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+    <ng-container matColumnDef="groupHeader">
+      <mat-cell *matCellDef="let groupBy"><strong>{{ groupBy.header }}</strong></mat-cell>
+    </ng-container>
+
+    <mat-row colspan="3" *matRowDef="let row; columns: ['groupHeader']; when: isGroup"></mat-row>
+  </mat-table>
+</ng-template>

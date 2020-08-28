@@ -1,3 +1,9 @@
-export const STATIONS = /^([a-zA-Z]{4}\s)*[a-zA-Z]{4}$/;
+export const BACKEND_SERVICE = 'https://ogcie.iblsoft.com/ria/opmetquery';
 
-export const COUNTRIES = /^([a-zA-Z]{2}\s)*[a-zA-Z]{2}$/;
+export const COUNTRY_CONFIG = {
+  locale: 'sk-SK',
+  dateTimeFormat: 'dd.MM.yyyy HH:mm:ss',
+  timezone: 'Europe/Bratislava'
+}
+
+export const WEATHER_WARNING = 30;

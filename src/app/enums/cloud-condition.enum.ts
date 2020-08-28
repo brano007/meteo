@@ -1,5 +1,5 @@
-export enum ReportTypes {
-  METAR = 'METAR',
-  TAF = 'TAF',
-  SIGMET = 'SIGMET'
+export enum CloudCondition {
+  BKN = 'BKN',
+  FEW = 'FEW',
+  SCT = 'SCT'
 }
