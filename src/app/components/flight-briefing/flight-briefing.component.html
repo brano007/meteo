@@ -15,7 +15,7 @@
           type="text"
           formControlName="stations">
         <mat-error *ngIf="hasError('stations', 'pattern')">
-          Station (ICAO Code) must have length of four alphabets. Mulitple stations can be added by space.
+          Station (ICAO Code) must have length of four alphabets.
         </mat-error>
       </mat-form-field>
     </div>
@@ -31,7 +31,7 @@
       </mat-form-field>
     </div>
     <mat-error *ngIf="countryStationChosen()">
-      At least one country or station is required. Mulitple countries or stations can be added by space.
+      At least one country or station is required. Multiple countries or stations can be added by space.
     </mat-error>
     <button
       mat-flat-button color="primary"

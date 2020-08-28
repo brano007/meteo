@@ -102,6 +102,6 @@ export class FlightBriefingComponent {
       return false;
     }
 
-    return this.dataTable && this.dataTable.length === 0;
+    return this.dataTable.length === 0;
   }
 }
