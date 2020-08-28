@@ -46,18 +46,17 @@ export class FlightBriefingComponent {
       .pipe(take(1))
       .subscribe((value: FlightBriefingResponse) => {
         this.loading = false;
-        console.log('eee', value);
         this.dataTable = this.groupByProperty(value.result, 'stationId');
       });
     }
   }
 
   hasError(name: string, errorName: string): boolean {
-    return !!this.form?.controls[name].hasError(errorName) && !!this.form?.controls[name].touched;
+    return !!this.form.controls[name].hasError(errorName) && !!this.form.controls[name].touched;
   }
 
   countryStationChosen(): boolean {
-    return this.form?.errors?.oneFieldRequired && (this.form?.controls['countries'].touched || this.form?.controls['stations'].touched);
+    return this.form.errors && this.form.errors.oneFieldRequired && (this.form.controls['countries'].touched || this.form.controls['stations'].touched);
   }
 
   sendParams(): FlightBriefingParams {
@@ -103,6 +102,6 @@ export class FlightBriefingComponent {
       return false;
     }
 
-    return this.dataTable?.length === 0;
+    return this.dataTable && this.dataTable.length === 0;
   }
 }
