@@ -25,6 +25,7 @@
     "ajv": "^6.9.1",
     "core-js": "^2.5.4",
     "rxjs": "^6.6.2",
+    "uuid": "^8.3.0",
     "zone.js": "^0.10.3"
   },
   "devDependencies": {
